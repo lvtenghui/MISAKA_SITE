@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="../assets/logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                <img src="../../assets/logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                 <b> XFlySim</b>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"

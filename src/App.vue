@@ -1,10 +1,10 @@
 <script setup>
 // import HelloWorld from './components/HelloWorld.vue'
-import LoginPage from './components/LoginPage.vue'
+import MainPage from './components/LoginPage/MainPage.vue'
 </script>
 
 <template>
-  <LoginPage style="width: 100vw; height: 100vh;"></LoginPage>
+  <MainPage style="width: 100vw; height: 100vh;"></MainPage>
   <!-- <HelloWorld msg="Vite + Vue" /> -->
 </template>
 
