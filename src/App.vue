@@ -4,7 +4,7 @@ import MainPage from './components/LoginPage/MainPage.vue'
 </script>
 
 <template>
-  <MainPage style="width: 100vw; height: 100vh;"></MainPage>
+  <MainPage></MainPage>
   <!-- <HelloWorld msg="Vite + Vue" /> -->
 </template>
 
