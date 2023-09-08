@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" style="width: 100%">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src="../../assets/logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
