@@ -16,12 +16,19 @@ export default {
             container: "map",
             center: [113.2, 35.4],
             zoom: 4,
-            pitch: 45,
+            pitch: 50,
             style: "mapbox://styles/mapbox/satellite-streets-v12",
             language: 'zh-Hans',
         });
         map.on('style.load', () => {
-            map.setFog({});
+            map.setFog({
+                "range": [0.8, 8],
+                "color": "#ffefef",
+                "horizon-blend": 0.3,
+                "high-color": "#245bde",
+                "space-color": "#000000",
+                "star-intensity": 1
+            });
             spinGlobe();
             map.addSource('mapbox-dem', {
                 'type': 'raster-dem',
@@ -31,19 +38,203 @@ export default {
             });
             // add the DEM source as a terrain layer with exaggerated height
             map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 30 });
-            map.loadImage('../../src/assets/plane.png', function (error, image) {
-                if (error) throw error;
-                map.addImage('plane', image);
-            });
             axios({
                 methods: 'get',
                 url: 'https://efb.xflysim.com/map/data/getOnline.php'
             }).then(function (data) {
-                var flightData = data.data.flight;
+                var onlineData = data.data;
+                map.addSource('ctrData', {
+                    type: 'geojson',
+                    data: onlineData.ctr,
+                });
                 map.addSource('flightData', {
                     type: 'geojson',
-                    data: flightData,
+                    data: onlineData.flight,
                 });
+                map.addSource('vaData', {
+                    type: 'geojson',
+                    data: onlineData.va,
+                });
+                map.addSource('simData', {
+                    type: 'geojson',
+                    data: onlineData.sim,
+                });
+                map.addSource('appData', {
+                    type: 'geojson',
+                    data: onlineData.app,
+                });
+                map.addSource('twrData', {
+                    type: 'geojson',
+                    data: onlineData.twr,
+                });
+                map.addSource('atisData', {
+                    type: 'geojson',
+                    data: onlineData.atis,
+                });
+                map.addSource('fssData', {
+                    type: 'geojson',
+                    data: onlineData.fss,
+                });
+                map.loadImage('../../src/assets/map/plane.png', function (error, image) {
+                    if (error) throw error;
+                    map.addImage('plane', image);
+                });
+                map.loadImage('../../src/assets/map/vaPlane.png', function (error, image) {
+                    if (error) throw error;
+                    map.addImage('vaPlane', image);
+                });
+                map.loadImage('../../src/assets/map/atis.png', function (error, image) {
+                    if (error) throw error;
+                    map.addImage('atis', image);
+                });
+                map.loadImage('../../src/assets/map/twr.png', function (error, image) {
+                    if (error) throw error;
+                    map.addImage('twr', image);
+                });
+
+                map.addLayer({
+                    'id': 'fssfirboundaries',
+                    'type': 'fill',
+                    'source': 'fssData',
+                    'paint': {
+                        'fill-color': '#DC3545',
+                        'fill-opacity': [
+                            'case',
+                            ['boolean', ['feature-state', 'hover'], false],
+                            0.6,
+                            0.4
+                        ]
+                    },
+                    'maxzoom': 12,
+                });
+
+                map.addLayer({
+                    'id': 'fssfirboundaries-stroke',
+                    'type': 'line',
+                    'source': 'fssData',
+                    'layout': {},
+                    'paint': {
+                        'line-color': 'white',
+                        'line-opacity': 1,
+                        'line-width': 2,
+                    },
+                    'maxzoom': 12,
+                });
+
+
+                map.addLayer({
+                    'id': 'ctrfirboundaries',
+                    'type': 'fill',
+                    'source': 'ctrData',
+                    'paint': {
+                        'fill-color': '#FFC107',
+                        'fill-opacity': [
+                            'case',
+                            ['boolean', ['feature-state', 'hover'], false],
+                            0.6,
+                            0.4
+                        ]
+                    },
+                    'maxzoom': 12,
+                });
+
+                map.addLayer({
+                    'id': 'ctrfirboundaries-stroke',
+                    'type': 'line',
+                    'source': 'ctrData',
+                    'layout': {},
+                    'paint': {
+                        'line-color': 'white',
+                        'line-opacity': 1,
+                        'line-width': 2,
+                    },
+                    'maxzoom': 12,
+                });
+
+                map.addLayer({
+                    'id': 'simtraconboundaries',
+                    'type': 'fill',
+                    'source': 'simData',
+                    'paint': {
+                        'fill-color': 'yellow',
+                        'fill-opacity': [
+                            'case',
+                            ['boolean', ['feature-state', 'hover'], false],
+                            0.6,
+                            0.4
+                        ]
+                    },
+                    'maxzoom': 12,
+                });
+
+                map.addLayer({
+                    'id': 'simtraconboundaries-stroke',
+                    'type': 'line',
+                    'source': 'simData',
+                    'layout': {},
+                    'paint': {
+                        'line-color': 'white',
+                        'line-opacity': 1,
+                        'line-width': 2,
+                    },
+                    'maxzoom': 12,
+                });
+
+                map.addLayer({
+                    'id': 'apptraconboundaries',
+                    'type': 'fill',
+                    'source': 'appData',
+                    'paint': {
+                        'fill-color': '#0DCAF0',
+                        'fill-opacity': [
+                            'case',
+                            ['boolean', ['feature-state', 'hover'], false],
+                            0.6,
+                            0.4
+                        ]
+                    },
+                    'maxzoom': 12,
+                });
+
+                map.addLayer({
+                    'id': 'apptraconboundaries-stroke',
+                    'type': 'line',
+                    'source': 'appData',
+                    'layout': {},
+                    'paint': {
+                        'line-color': 'white',
+                        'line-opacity': 1,
+                        'line-width': 2,
+                    },
+                    'maxzoom': 12,
+                });
+
+                map.addLayer({
+                    'id': 'twr',
+                    'type': 'symbol',
+                    'source': 'twrData',
+                    'layout': {
+                        'icon-image': 'twr',
+                        'icon-size': 1,
+                        "icon-ignore-placement": true,
+                    },
+                    'minzoom': 0,
+                    'maxzoom': 0
+                });
+
+                map.addLayer({
+                    'id': 'atis',
+                    'type': 'symbol',
+                    'source': 'atisData',
+                    'layout': {
+                        'icon-image': 'atis',
+                        'icon-size': 1,
+                        "icon-ignore-placement": true,
+                    },
+                    'minzoom': 0,
+                    'maxzoom': 0
+                });
+
                 map.addLayer({
                     'id': 'flight',
                     'type': 'symbol',
@@ -58,6 +249,24 @@ export default {
                     'minzoom': 0,
                     'maxzoom': 0,
                 });
+
+
+                map.addLayer({
+                    'id': 'va',
+                    'type': 'symbol',
+                    'source': 'vaData',
+                    'layout': {
+                        'icon-image': 'vaPlane',
+                        'icon-size': 0.6,
+                        'icon-rotate': ['get', 'heading'],
+                        'icon-rotation-alignment': 'map',
+                        "icon-ignore-placement": true,
+                    },
+                    'minzoom': 0,
+                    'maxzoom': 0,
+                });
+
+
             })
             setInterval(getOnlineData, 5000);
         });
@@ -66,8 +275,15 @@ export default {
                 methods: 'get',
                 url: 'https://efb.xflysim.com/map/data/getOnline.php'
             }).then(function (data) {
-                var flightData = data.data.flight;
-                map.getSource('flightData').setData(flightData);
+                var onlineData = data.data;
+                map.getSource('flightData').setData(onlineData.flight);
+                map.getSource('vaData').setData(onlineData.va);
+                map.getSource('atisData').setData(onlineData.atis);
+                map.getSource('simData').setData(onlineData.sim);
+                map.getSource('twrData').setData(onlineData.twr);
+                map.getSource('appData').setData(onlineData.app);
+                map.getSource('ctrData').setData(onlineData.ctr);
+                map.getSource('fssData').setData(onlineData.fss);
             })
         }
         const secondsPerRevolution = 120;

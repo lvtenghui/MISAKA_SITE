@@ -5,7 +5,7 @@ import EarthBackground from './EarthBackground.vue';
 
 <template>
     <NavBar></NavBar>
-    <div class="row" style="text-align: center; height: 100vh; width: 100%;--bs-gutter-x: 0;">
+    <div class="row" style="text-align: center; height: 100vh; width: 100%;--bs-gutter-x: 0;user-select: none;">
         <EarthBackground style="z-index: 1;"></EarthBackground>
         <div style="vertical-align: middle;margin: auto;z-index: 2;">
             <div class="col-12" style="margin-top: 20px;">
