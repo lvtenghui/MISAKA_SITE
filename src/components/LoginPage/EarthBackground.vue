@@ -123,6 +123,6 @@ export default {
 </script>
 
 <template>
-    <!-- <div id="bulr" style="position: absolute;backdrop-filter: blur(4px);z-index: 2;width: 100vw;height: 100%;"></div> -->
+    <div id="bulr" style="position: absolute;backdrop-filter: blur(4px);z-index: 2;width: 100vw;height: 100%;"></div>
     <div id="map" style="position: absolute;width: 100vw;height: 100%;z-index: 1;"></div>
 </template>
