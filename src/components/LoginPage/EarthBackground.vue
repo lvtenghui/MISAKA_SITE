@@ -14,7 +14,7 @@ export default {
         mapboxgl.accessToken = "pk.eyJ1IjoiYmVubWNjbGludG9jayIsImEiOiJjazY1cnBtMTQwMjRkM2tzZnk1MXoyenczIn0.2PyUF_qP-wupcGu-yHaekQ";
         var map = new mapboxgl.Map({
             container: "map",
-            center: [113.2, 35.4],
+            center: [95.2, 30.4],
             zoom: 4.5,
             pitch: 15,
             style: "mapbox://styles/mapbox/satellite-streets-v12",
