@@ -6,5 +6,8 @@
         <div class="col col-xl-12 col-xxl-6 offset-xxl-6" style="margin-top: 100px;">
             <b style="font-size: 3.5em; color: white;text-shadow:0 0 20px black;">XFlySim 全球连线飞行平台</b>
         </div>
+        <div class="col col-xl-12 col-xxl-6 offset-xxl-6" style="margin-top: 100px;">
+            <button type="button" class="btn btn-outline-warning btn-lg">登录/注册</button>
+        </div>
     </div>
 </template>
