@@ -15,7 +15,7 @@ export default {
         var map = new mapboxgl.Map({
             container: "map",
             center: [113.2, 35.4],
-            zoom: 4,
+            zoom: 4.5,
             pitch: 15,
             style: "mapbox://styles/mapbox/satellite-streets-v12",
             language: 'zh-Hans',
@@ -30,14 +30,6 @@ export default {
                 "star-intensity": 1
             });
             spinGlobe();
-            map.addSource('mapbox-dem', {
-                'type': 'raster-dem',
-                'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
-                'tileSize': 512,
-                // 'maxzoom': 4
-            });
-            // add the DEM source as a terrain layer with exaggerated height
-            map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 30 });
             axios({
                 methods: 'get',
                 url: 'https://efb.xflysim.com/map/data/getOnline.php'
@@ -286,7 +278,7 @@ export default {
                 map.getSource('fssData').setData(onlineData.fss);
             })
         }
-        const secondsPerRevolution = 120;
+        const secondsPerRevolution = 220;
         const maxSpinZoom = 5;
         const slowSpinZoom = 3;
 
