@@ -16,7 +16,7 @@ export default {
             container: "map",
             center: [113.2, 35.4],
             zoom: 4,
-            pitch: 50,
+            pitch: 15,
             style: "mapbox://styles/mapbox/satellite-streets-v12",
             language: 'zh-Hans',
         });
@@ -340,5 +340,5 @@ export default {
 
 <template>
     <div id="bulr" style="position: absolute;backdrop-filter: blur(4px);z-index: 2;width: 100vw;height: 100%;"></div>
-    <div id="map" style="position: absolute;width: 100vw;height: 100%;z-index: 1;"></div>
+    <div id="map" style="position: absolute;width: 205vw;height: 100%;z-index: 1; max-width: none; left: -105vw"></div>
 </template>
