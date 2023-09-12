@@ -278,7 +278,7 @@ export default {
                 map.getSource('fssData').setData(onlineData.fss);
             })
         }
-        const secondsPerRevolution = 220;
+        const secondsPerRevolution = 150;
         const maxSpinZoom = 5;
         const slowSpinZoom = 3;
 
