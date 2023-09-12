@@ -15,8 +15,8 @@ export default {
         var map = new mapboxgl.Map({
             container: "map",
             center: [113.2, 35.4],
-            zoom: 4,
-            pitch: 15,
+            zoom: 4.5,
+            pitch: 10,
             style: "mapbox://styles/mapbox/satellite-streets-v12",
             language: 'zh-Hans',
         });
@@ -286,8 +286,8 @@ export default {
                 map.getSource('fssData').setData(onlineData.fss);
             })
         }
-        const secondsPerRevolution = 120;
-        const maxSpinZoom = 5;
+        const secondsPerRevolution = 2200;
+        const maxSpinZoom = 19;
         const slowSpinZoom = 3;
 
         let userInteracting = false;
