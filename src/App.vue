@@ -1,15 +1,15 @@
 <script setup>
 // import HelloWorld from './components/HelloWorld.vue'
 import MainPage from './components/LoginPage/MainPage.vue'
-import TestPage from './components/TESTPlace/testpage.vue'
+// import TestPage from './components/TESTPlace/testpage.vue'
 </script>
 
 <template>
   <!--暂时测试隐藏-->
-  <!--<MainPage></MainPage> -->
+  <MainPage></MainPage>
 
   <!--测试页面，用于学习下翻页面-->
-  <TestPage></TestPage>
+  <!-- <TestPage></TestPage> -->
 
   <!-- <HelloWorld msg="Vite + Vue" /> -->
 </template>
